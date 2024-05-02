@@ -1,0 +1,13 @@
+.section {
+    padding: 80px 0;
+  }
+  
+  .card {
+    margin-bottom: 30px;
+  }
+  
+  .card-img-top {
+    width: 50%; 
+    height: auto;
+  
+  }

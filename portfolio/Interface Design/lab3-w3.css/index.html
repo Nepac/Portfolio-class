@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4th of July Celebration</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+
+<div class="w3-bar w3-red">
+  <a href="#" class="w3-bar-item w3-button">Home</a>
+  <a href="#about" class="w3-bar-item w3-button">About</a>
+  <div class="w3-dropdown-click">
+    <button onclick="toggleActivitiesDropdown(event)" class="w3-button w3-bar-item">Activities</button>
+    <div id="activitiesDropdown" class="w3-dropdown-content w3-bar-block w3-card" onclick="event.stopPropagation()">
+      <input type="text" id="activityFilterInput" onkeyup="filterDropdown()" placeholder="Search activities..." class="w3-input w3-border">
+      <a href="#" class="w3-bar-item w3-button" onclick="filterActivities('Fireworks')">Fireworks</a>
+      <a href="#" class="w3-bar-item w3-button" onclick="filterActivities('BBQ')">BBQ</a>
+      <a href="#" class="w3-bar-item w3-button" onclick="filterActivities('Parade')">Parade</a>
+    </div>
+  </div>
+  <a href="#food" class="w3-bar-item w3-button">Food</a>
+</div>
+
+<div class="w3-container w3-center w3-padding-64 w3-animate-top">
+  <h1 class="w3-jumbo w3-cursive">4th of July Celebration</h1>
+  <p class="w3-large">Let's celebrate independence!</p>
+  <img src="photo-1436124026657-36828b43c7ce.avif" alt="USA Flag" class="w3-circle w3-margin-top circle-img">
+</div>
+
+
+<div id="about" class="w3-container w3-padding-64 w3-center">
+  <h2 class="w3-text-red">About 4th of July</h2>
+  <p>The Fourth of July, also known as Independence Day, commemorates the adoption of the Declaration of Independence on July 4, 1776. It's a day of celebration, fireworks, parades, and patriotism.</p>
+</div>
+
+
+<div id="activities" class="w3-container w3-padding-64 w3-center">
+  <h2 class="w3-text-red">Activities</h2>
+  <ul class="w3-ul w3-border" id="activityList">
+    <li>Fireworks</li>
+    <li>BBQ</li>
+    <li>Parade</li>
+  </ul>
+  <img src="realistic-fireworks-border-illustration_1284-57268.avif" alt="Activities" class="w3-circle w3-margin-top circle-img">
+</div>
+
+
+<div id="food" class="w3-container w3-padding-64 w3-center">
+  <h2 class="w3-text-red">Food</h2>
+  <div class="w3-row-padding">
+    <div class="w3-col l4 m6 w3-margin-bottom">
+      <div class="w3-card w3-padding food-item">
+        <h3>Burgers</h3>
+        <p>Classic American burgers made with juicy beef patties, fresh vegetables, and delicious sauces.</p>
+      </div>
+    </div>
+    <div class="w3-col l4 m6 w3-margin-bottom">
+      <div class="w3-card w3-padding food-item">
+        <h3>Hotdogs</h3>
+        <p>Grilled hotdogs served in soft buns with a variety of toppings like ketchup, mustard, onions, and relish.</p>
+      </div>
+    </div>
+    <div class="w3-col l4 m6 w3-margin-bottom">
+      <div class="w3-card w3-padding food-item">
+        <h3>Apple Pie</h3>
+        <p>Serve delicious apple pie for dessert. Made with fresh apples and a flaky crust, it's a true American classic.</p>
+      </div>
+    </div>
+  </div>
+  <img src="download (3).jpg" alt="Food" class="w3-circle w3-margin-top circle-img">
+</div>
+
+
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <div class="w3-container w3-center">
+    <a href="#" class="w3-tag w3-red w3-xlarge">COME HAVE FUN WITH US</a>
+  </div>
+</footer>
+
+<!-- Script to toggle activities dropdown -->
+<script>
+function toggleActivitiesDropdown(event) {
+  event.stopPropagation(); // Prevent event bubbling
+  var activitiesDropdown = document.getElementById("activitiesDropdown");
+  if (activitiesDropdown.style.display === "block") {
+    activitiesDropdown.style.display = "none";
+  } else {
+    activitiesDropdown.style.display = "block";
+  }
+}
+
+// Function to filter activities
+function filterActivities(activity) {
+  var activityList = document.getElementById("activityList").getElementsByTagName("li");
+  for (var i = 0; i < activityList.length; i++) {
+    if (activityList[i].innerText === activity) {
+      activityList[i].style.display = "block";
+    } else {
+      activityList[i].style.display = "none";
+    }
+  }
+}
+
+// Function to search for activities
+function searchActivities() {
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('activitySearchInput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("activityList");
+  li = ul.getElementsByTagName('li');
+  for (i = 0; i < li.length; i++) {
+    a = li[i];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+// Function to close dropdown when clicking outside
+document.body.addEventListener('click', function() {
+  var activitiesDropdown = document.getElementById("activitiesDropdown");
+  activitiesDropdown.style.display = "none";
+});
+</script>
+
+</body>
+</html>
